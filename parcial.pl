@@ -77,9 +77,14 @@ noQuedaEnEuropa(UnDestino):-
 
 esUnDestinoPosible(UnDestino):-
     continente(UnDestino,_).
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Punto 4
+elDestinoMasExclusivo(UnDestino,UnaEmpresa):-
+    destinoPorEmpresa(UnaEmpresa,UnaEmpresa),
+    forall(vende(UnaEmpresa,_,OtroDestino),esMasCaro(UnDestino,OtroDestino)).
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+destinoPorEmpresa(UnaEmpresa,UnDestino):-
+    vende(UnaEmpresa,_,UnDestino).
+
 %Punto 5
 ventaExtravagante(UnDestino):-
     esUnDestinoPosible(UnDestino),
